@@ -1,0 +1,6 @@
+2018-03-04 - first post of the day #hash2
+here's some content
+2018-03-04 - second post of the day #hash1
+here's more content
+2018-03-05 - next day's post #hash1
+that's three posts in a row

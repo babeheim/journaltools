@@ -8,6 +8,19 @@ test_that("basic works", {
   expect_true(length(doc$posts)==3)
 })
 
+test_that("unusual ones work", {
+  path <- "./journals/extra_newlines.txt"
+  doc <- load_journal(path)
+  expect_true(identical(names(doc), c("titles", "posts")))
+  expect_true(length(doc$titles)==3)
+  expect_true(length(doc$posts)==3)
+  path <- "./journals/no_newlines.txt"
+  doc <- load_journal(path)
+  expect_true(identical(names(doc), c("titles", "posts")))
+  expect_true(length(doc$titles)==3)
+  expect_true(length(doc$posts)==3)
+})
+
 test_that("bad_date prints warning", {
   path <- "./journals/bad_date.txt"
   expect_warning(doc <- load_journal(path))
