@@ -1,9 +1,15 @@
 
 
 
+
 load_journal <- function( path ){
 
   raw <- readLines(path, warn=FALSE)
+
+  # replace all nonprinting characters here? i guess it's not necessary
+  # raw <- stringi::stri_trans_general(raw, "latin-ascii") 
+  # raw <- gsub("[\x01-\x1F]", "", raw)
+  # raw <- gsub("\\\\x96", "", raw) # hack
 
   title_elements <- grep("^\\d\\d\\d\\d-\\d\\d-\\d\\d - ", raw)
 
@@ -17,12 +23,17 @@ load_journal <- function( path ){
   post_starts <- title_elements + 1
   post_ends <- c(title_elements[2:length(title_elements)]-1, length(raw))
 
-  output <- list()
+  output <- list(titles=character(),posts=list()) # got it!
 
   output$titles <- raw[title_elements]
 
   for(i in 1:n_posts) output$posts[[i]] <- raw[post_starts[i]:post_ends[i]]
 
+  # ohhhhh if the previous entries were length 1, the indexing doesnt work right...
+
+  # interesting error: if you have a vector with a "fail\\x96" in it, you cannot save it as an element in a list of vectors
+  # even if that element already exists...it would be better to just scrub it out but I cannot! 
+ 
   if(title_elements[1] > 1){
     header <- raw[1:(title_elements[1]-1)]
     header <- gsub("\\s", "", header)

@@ -1,9 +1,5 @@
 
 
-# characters to screen out:
-#  
-# "\v" should be dropped...its producing weird results 
-
 
 tidy_journal <- function( journal ){
 
@@ -14,9 +10,6 @@ tidy_journal <- function( journal ){
   if( length(journal$titles) != length(journal$posts) ){
     stop("this is not a valid journal object; titles and posts not same length")
   }
-
-  # scrub nonprinting characters
-  ## oh, what happens if the line contains things that R operates on? \ \ n?
 
   # convert all whitespace lines of any length to newlines
 

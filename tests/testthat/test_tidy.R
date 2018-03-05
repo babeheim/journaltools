@@ -1,6 +1,6 @@
 
 
-
+# also confirm that WINDOWS-FORMATTED text files work without corruptions! 
 
 test_that("chronological ordering works", {
   path <- "./journals/basic_journal.txt"
@@ -70,4 +70,27 @@ test_that("extra newlines are removed", {
 
 })
 
-# confirm all nonprinting characters are scrubbed
+
+test_that("nonprinting characters are preserved", {
+
+  path <- "./journals/nonprinting_characters.txt"
+  doc <- load_journal(path)
+  x <- tidy_journal(doc)
+  expect_true(length(x$titles)==3)
+  expect_true(length(x$posts)==3)
+
+})
+
+
+# confirm unusual Unicode characters are preserved
+
+test_that("unusual unicode characters are preserved", {
+
+  path <- "./journals/unusual_characters.txt"
+  doc <- load_journal(path)
+
+  x <- tidy_journal(doc)
+  expect_true(length(grep("🔥", x$posts[[1]])) > 0)
+  expect_true(length(grep("日本語", x$posts[[2]])) > 0)
+
+})
