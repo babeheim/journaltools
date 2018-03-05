@@ -49,7 +49,7 @@ load_journal <- function( path ){
     for(i in 1:length(bad_dates)) print(output$titles[bad_dates[i]])
   }
 
-  dups <- output$titles[duplicated(output$titles)]
+  dups <- unique(output$titles[duplicated(output$titles)])
   if(length(dups) > 0){
     warning("these post titles are exact duplicates, proceed with caution")
     for(i in 1:length(dups)) print(dups[i])

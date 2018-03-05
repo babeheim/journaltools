@@ -4,7 +4,7 @@
 
 test_that("chronological ordering works", {
   path <- "./journals/basic_journal.txt"
-  doc <- load_journal(path)
+  doc <- read_journal(path)
   expect_silent(x <- tidy_journal(doc))
   expect_false(identical(doc, x)) # false because of the reorder
   expect_true(length(x$titles)==3)
@@ -17,10 +17,10 @@ test_that("chronological ordering works", {
 
 test_that("corrupted files get caught", {
   path <- "./journals/basic_journal.txt"
-  doc <- load_journal(path)
+  doc <- read_journal(path)
   doc <- doc$titles
   expect_error(x <- tidy_journal(doc))
-  doc <- load_journal(path)
+  doc <- read_journal(path)
   doc$titles <- doc$titles[-1]
   expect_error(x <- tidy_journal(doc))
 
@@ -30,7 +30,7 @@ test_that("corrupted files get caught", {
 test_that("no-newline posts work fine", {
 
   path <- "./journals/no_newlines.txt"
-  doc <- load_journal(path)
+  doc <- read_journal(path)
   expect_silent(x <- tidy_journal(doc))
   expect_false(identical(doc, x)) # false because of the reorder
   expect_true(length(x$titles)==3)
@@ -52,7 +52,7 @@ test_that("no-newline posts work fine", {
 test_that("extra newlines are removed", {
 
   path <- "./journals/extra_newlines.txt"
-  doc <- load_journal(path)
+  doc <- read_journal(path)
   expect_silent(x <- tidy_journal(doc))
   expect_false(identical(doc, x)) # false because of the reorder
   expect_true(length(x$titles)==3)
@@ -74,7 +74,7 @@ test_that("extra newlines are removed", {
 test_that("nonprinting characters are preserved", {
 
   path <- "./journals/nonprinting_characters.txt"
-  doc <- load_journal(path)
+  doc <- read_journal(path)
   x <- tidy_journal(doc)
   expect_true(length(x$titles)==3)
   expect_true(length(x$posts)==3)
@@ -87,7 +87,7 @@ test_that("nonprinting characters are preserved", {
 test_that("unusual unicode characters are preserved", {
 
   path <- "./journals/unusual_characters.txt"
-  doc <- load_journal(path)
+  doc <- read_journal(path)
 
   x <- tidy_journal(doc)
   expect_true(length(grep("🔥", x$posts[[1]])) > 0)
