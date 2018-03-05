@@ -28,7 +28,7 @@ test_that("unusual ones work", {
   expect_true(length(doc$posts)==3)
 })
 
-path <- "./tests/testthat/journals/all_one_line_except_last.txt"
+  path <- "./tests/testthat/journals/dup_title.txt"
 
 test_that("bad_date prints warning", {
   path <- "./journals/bad_date.txt"
