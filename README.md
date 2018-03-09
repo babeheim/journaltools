@@ -27,7 +27,7 @@ Here's an example document with several posts:
 2018-03-05 - journaltools to-dos
 
 add man pages for each of the functions [x]
-finish overview vignette 
+finish overview vignette [x]
 
 
 
@@ -54,7 +54,7 @@ half a megabyte for 1 minute of audio!, so an hour is only about 30 MB
 
 lets say 60 megs a day
 thats 16 days x 60 megs = 1 GB
-22 Gb to record a whole year! 
+22 Gb to record a whole year 
 
 
 
@@ -65,29 +65,6 @@ sudo fdisk -l
 sudo mount --options remount,rw /dev/sdd
 
 Replace /dev/sdd with your SDHC drive, you can find it using fdisk -l.
-
-
-
-2017-12-07 - notes on the calle de muerte #fieldwork
-
-coroico could be seen on another mountainside across the vallye
-- historically gold mining town, under regular attack by indians
-- the capital of the North-Yungas
-- 5,003 ft
-
-"5000 Aymaras attacked the town, which in those days only had 500 inhabitants. The town stood strong, forcing the Aymaras into retreat."
-
-The region around Coroico has remained a traditional coca growing area and is the smallest of three areas of coca production in Bolivia.
-
-the high switchbacks, ah this isnt so bad
-the new highway 3 is not bad for most of the descent to the intersectoin with the old yungas road
-a few hundred feet down
-once we got lower into the vally, the terror began
-cannot imagine what it must hae been like taking old yungas road where the whole thing was like this
-bus-sized lanes
-and still cars were trying to zip around us when presented with a chance
-
-https://en.wikipedia.org/wiki/Yungas_Road
 
 
 
@@ -118,7 +95,7 @@ x <- unlist(tic.log())
 
 2017-11-10 - using cp function in OSX terminal
 
-cp -nv /Volumes/ecology/ecoboard/Data/"jeremy koster"/"time allocation interview"/* "/Volumes/ecology/eco_koster/Wave1/time allocation interview"
+cp -nv /Volumes/"time allocation interview"/* "/Volumes/ecology/Wave1/time allocation interview"
 
 
 
